@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Plancher
+  - Mur Avant
+  - "Mur Arri\xE8re"
+  - Mur Droit
+  - Mur Gauche
+  - Plafond
   layers:
   - Default
   - TransparentFX
