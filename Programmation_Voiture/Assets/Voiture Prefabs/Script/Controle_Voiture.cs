@@ -18,7 +18,7 @@ public class Controle_Voiture : MonoBehaviour
 
     public Vector3 eulertest;
 
-    public float maxBrakeTorque = 5000;
+    public float maxBrakeTorque = 1000;
     public float maxTorque = 1000;
 
 
@@ -35,9 +35,10 @@ public class Controle_Voiture : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private void OnCollisionStay(Collision CarBody)
+    private void OnCollisionStay(Collision collision)
     {
-        if (CarBody.gameObject.transform.tag == "Terrain")
+        Debug.Log("touche au sol");
+        if (collision.gameObject.tag == "Plancher")
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
