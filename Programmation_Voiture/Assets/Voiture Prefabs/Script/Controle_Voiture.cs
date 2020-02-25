@@ -23,16 +23,23 @@ public class Controle_Voiture : MonoBehaviour
 
 
     private Rigidbody rb;
-    
+
     public float steeringAngle;
     public float drift;
     public float hauteurReset;
 
     public static float vitesse;
+    public Camera Front_View;
+    public Camera Top_View;
+    public Camera Chase_View;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Front_View.enabled = false;
+        Top_View.enabled = false;
+        Chase_View.enabled = true;
     }
 
     private void OnCollisionStay(Collision collision)
@@ -198,7 +205,7 @@ public class Controle_Voiture : MonoBehaviour
 
         Wheel_Collider_FL.steerAngle = steeringAngle * Input.GetAxis("Horizontal");
         Wheel_Collider_FR.steerAngle = steeringAngle * Input.GetAxis("Horizontal");
-
+        changeCamera();
     }
     void Update()
     {
@@ -220,7 +227,7 @@ public class Controle_Voiture : MonoBehaviour
     }
 
 
-    private void Change_Position_Roue (WheelCollider _collider, Transform _transform)
+    private void Change_Position_Roue(WheelCollider _collider, Transform _transform)
     {
         Vector3 _pos = _transform.position;
         Quaternion _quat = _transform.rotation;
@@ -230,5 +237,27 @@ public class Controle_Voiture : MonoBehaviour
         _transform.position = _pos;
         _transform.Rotate(Wheel_Collider_FL.rpm / 60 * 360 * Time.deltaTime, 0, 0);
 
+    }
+
+    private void changeCamera()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Front_View.enabled = true;
+            Top_View.enabled = false;
+            Chase_View.enabled = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Front_View.enabled = false;
+            Top_View.enabled = true;
+            Chase_View.enabled = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Front_View.enabled = false;
+            Top_View.enabled = false;
+            Chase_View.enabled = true;
+        }
     }
 }

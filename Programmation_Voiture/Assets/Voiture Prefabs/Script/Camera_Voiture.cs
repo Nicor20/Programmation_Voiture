@@ -18,7 +18,7 @@ public class Camera_Voiture : MonoBehaviour
 
     public void MoveToTarget()
     {
-        Vector3 _targetPos = objectToFollow.position +
+        Vector3 _targetPos = objectToFollow.position + 
                              objectToFollow.forward * offset.z +
                              objectToFollow.right * offset.x +
                              objectToFollow.up * offset.y;
@@ -31,6 +31,9 @@ public class Camera_Voiture : MonoBehaviour
         MoveToTarget();
     }
 
-    
+    public void Driver_View ()
+    {
+
+    }
 
 }
