@@ -10,10 +10,9 @@ public class Vitesse_Voiture : MonoBehaviour
 
     void Update()
     {
-        vitesseKMH = Controle_Voiture.vitesse;
+        vitesseKMH = Mathf.Abs(Controle_Voiture.vitesse);
 
-        txtVitesse.GetComponent<Text>().text = vitesseKMH.ToString("0") + "Km/h";
-
+        txtVitesse.text = vitesseKMH.ToString("0") + " Km/h";
     }
 
 
